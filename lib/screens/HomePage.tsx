@@ -8,6 +8,18 @@ import { Typography, Utils } from '../styles/index';
 
 import Card from '../components/MenuCard';
 
+import database from '@react-native-firebase/database';
+import { firebase } from '@react-native-firebase/database';
+import { db } from '../../firebase-config.js';
+import {
+  ref,
+  onValue,
+  push,
+  update,
+  remove
+} from 'firebase/database';
+
+
 type Menu = {
   id: string;
   name: string;
@@ -16,36 +28,35 @@ type Menu = {
 const HomePage = () => {
   const [menu,setMenu] = useState([]);
 
-  // const getMenu = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       '../assets/coffee.json',
-  //     );
-  //     const json = await response.json();
-  //     setMenu(json.coffee)
-  //     console.warn(menu);
-  //     return menu;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+  const getMenu = async () => {
+    return onValue(ref(db, '/coffee'), querySnapShot => {
+      let data = querySnapShot.val() || {};
+      setMenu(data);
+      console.log(menu.length)
+    });
+  };
 
-  // useEffect(() => {
-  //   getMenu();
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // },[])
+  useEffect(() => {
+    getMenu();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   return (
     <SafeAreaView  style={styles.container}>
       <Text style={styles.headerText}>Hi, User! What can we get you today?</Text>
-      <TouchableOpacity>
+      {/* <TouchableOpacity>
           <Card name="Americano" price="5"/>
-        </TouchableOpacity>
-      {/* { menu.map(({name, price}) => {
-        return <TouchableOpacity>
-          <Card name={name} price='5'/>
-        </TouchableOpacity>
-      })} */}
+        </TouchableOpacity> */}
+      { menu.length > 0 ? (
+          menu.map( (result, i) =>  (
+            <TouchableOpacity key={i}>
+              <Card name={result['name']} price={result['price']} id={result['id']}/>
+            </TouchableOpacity> 
+          ))
+        ) : (
+          <Text>No todo item</Text>
+        )
+      }
     </SafeAreaView >
   );
 };

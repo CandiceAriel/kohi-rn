@@ -6,7 +6,8 @@ import { Typography, Utils } from '../styles/index';
 
 type CardProps = {
   name: string;
-  price: string
+  price: string,
+  id: string
 };
 
 const Card = (props: CardProps) => {
