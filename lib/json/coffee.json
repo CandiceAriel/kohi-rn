@@ -1,5 +1,5 @@
 {
-  "coffee": [
+  "coffee" : [
     {
       "id": 1,
       "name": "Latte",
@@ -96,11 +96,5 @@
       "currencyFormat": "£",
       "imagePath":"assets/images/latte_128.png"
     }
-  ],
-  "sizes" : [
-    "8oz",
-    "12oz",
-    "16oz",
-    "20oz"
   ]
 }
