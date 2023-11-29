@@ -9,11 +9,18 @@ export const baseText = {
 export const titleText = {
   fontSize: 24,
   fontFamily: 'Montserrat-Bold',
-  marginBottom: 20
+  marginTop: 20,
 }
 
 export const cardTitle = {
   fontSize: 20,
   fontFamily: 'Montserrat-Bold',
   
+}
+
+export const buttonSmallText = {
+  fontSize: 16,
+  lineHeight: 21,
+  letterSpacing: 0.25,
+  fontFamily: 'Montserrat-Bold',
 }
