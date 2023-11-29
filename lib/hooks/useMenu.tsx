@@ -2,7 +2,7 @@
 import React, { useState, useEffect} from "react";
 import { firebase } from '@react-native-firebase/database';
 
-const HomeLogic = () => {
+const useMenu = () => {
   const db = firebase.database();
   const [menu,setMenu] = useState([]);
 
@@ -29,4 +29,4 @@ const HomeLogic = () => {
   return menu;
 }
 
-export default HomeLogic;
+export default useMenu;
