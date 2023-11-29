@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "164664064158",
+    "firebase_url": "https://kohi-4b34a-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "kohi-4b34a",
+    "storage_bucket": "kohi-4b34a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164664064158:android:df422e7a7892a592ea638f",
+        "android_client_info": {
+          "package_name": "com.kohi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3kOHer6gjw9sVObPj6t8NkByrQtydqHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
