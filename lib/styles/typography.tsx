@@ -1,26 +1,29 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
 
-export const baseText = {
-  fontSize: 16,
-  fontFamily: 'Montserrat',
-}
+import { StyleSheet } from "react-native";
 
-export const titleText = {
-  fontSize: 24,
-  fontFamily: 'Montserrat-Bold',
-  marginTop: 20,
-}
-
-export const cardTitle = {
-  fontSize: 20,
-  fontFamily: 'Montserrat-Bold',
-  
-}
-
-export const buttonSmallText = {
-  fontSize: 16,
-  lineHeight: 21,
-  letterSpacing: 0.25,
-  fontFamily: 'Montserrat-Bold',
-}
+export const typography = StyleSheet.create({
+  baseText: {
+    fontSize: 16,
+    fontFamily: 'Montserrat',
+  },
+  titleText: {
+    fontSize: 24,
+    fontFamily: 'Montserrat-Bold',
+    marginTop: 20,
+  },
+  cardTitle: {
+    fontSize: 20,
+    fontFamily: 'Montserrat-Bold',
+    
+  },
+  buttonSmallText: {
+    fontSize: 16,
+    lineHeight: 21,
+    letterSpacing: 0.25,
+    fontFamily: 'Montserrat-Bold',
+    fontWeight: 'bold',
+    color: 'black',
+  },
+});

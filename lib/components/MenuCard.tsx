@@ -2,7 +2,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import {StyleSheet, Text, View } from 'react-native';
-import { Typography, Container } from '../styles/index';
+import { typography, customContainer, } from '../styles/index';
 
 type CardProps = {
   name: string;
@@ -12,9 +12,9 @@ type CardProps = {
 
 const Card = (props: CardProps) => {
   return (
-    <View  style={Container.cardContainer}>
-      <Text style={Typography.cardTitle}>{ props.name }</Text>
-      <Text style={Typography.cardTitle}>{ props.price }</Text>
+    <View  style={customContainer.cardContainer}>
+      <Text style={typography.cardTitle}>{ props.name }</Text>
+      <Text style={typography.cardTitle}>{ props.price }</Text>
     </View >
   );
 };
@@ -22,7 +22,4 @@ const Card = (props: CardProps) => {
 export default Card;
 
 const styles = StyleSheet.create({
-  cardTitle: {
-    ...Typography.cardTitle
-  }
 })

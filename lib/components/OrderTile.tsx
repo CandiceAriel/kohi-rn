@@ -2,7 +2,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import {StyleSheet, Text, View } from 'react-native';
-import { Typography, Container } from '../styles/index';
+import { typography, customContainer } from '../styles/index';
 import { FlatList } from 'react-native-gesture-handler';
 
 type OrderProps = {
@@ -15,8 +15,8 @@ const OrderTile = (props: OrderProps) => {
  
   return (
     <View style={styles.tileContainer}>
-      <Text style={Typography.cardTitle}>{ props.name }</Text>
-      <Text style={Typography.cardTitle}>{ props.price }</Text>
+      <Text style={typography.cardTitle}>{ props.name }</Text>
+      <Text style={typography.cardTitle}>{ props.price }</Text>
     </View >
   );
 };
@@ -25,11 +25,8 @@ export default OrderTile;
 
 const styles = StyleSheet.create({
   tileContainer: {
-    ...Container.tileContainer,
+    ...customContainer.tileContainer,
     flex: 1,
     padding: 10,
   },
-  cardTitle: {
-    ...Typography.cardTitle
-  }
 })

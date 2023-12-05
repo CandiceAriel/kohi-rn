@@ -12,7 +12,7 @@ import { firebase } from '@react-native-firebase/database';
 //import Components
 import useMenu from '../hooks/useMenu';
 import Card from '../components/MenuCard';
-import { Typography, Container, btn } from '../styles/index';
+import { typography, customContainer, customBtn } from '../styles/index';
 
 const HomePage = ({ navigation } : {navigation: any}) => {
   const menuDt = useMenu();
@@ -23,10 +23,10 @@ const HomePage = ({ navigation } : {navigation: any}) => {
 
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
-      <SafeAreaView  style={styles.container}>
+      <View  style={styles.container}>
         <View>
-          <Pressable style={styles.buttonSmall} onPress={goToCart}>
-            <Text style={styles.buttonSmallText}>Cart</Text>
+          <Pressable style={customBtn.buttonSmall} onPress={goToCart}>
+            <Text style={typography.buttonSmallText}>Cart</Text>
           </Pressable>
           <Text style={styles.headerText}>Hi, User! What can we get you today?</Text>
           
@@ -42,7 +42,7 @@ const HomePage = ({ navigation } : {navigation: any}) => {
             <Text>No todo item</Text>
           )
         }
-      </SafeAreaView >
+      </View >
     </ScrollView>
     
   );
@@ -52,23 +52,17 @@ export default HomePage;
 
 const styles = StyleSheet.create({
   container: {
-    ...Container.baseContainer,
+    ...customContainer.baseContainer,
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 20
   },
   headerText: {
-    ...Typography.titleText,
+    ...typography.titleText,
     color: '#ffffff',
   },
-  buttonSmall: {
-    ...btn.buttonSmall,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FFFFFF',
-  },
   buttonSmallText: {
-    ...Typography.buttonSmallText,
+    ...typography.buttonSmallText,
     fontWeight: 'bold',
     color: 'black',
   }
