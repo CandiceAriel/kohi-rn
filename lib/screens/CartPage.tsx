@@ -8,11 +8,12 @@ import React, { useEffect, useState } from 'react';
 import {StyleSheet, Text, View, Pressable } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { useAppDispatch,useAppSelector } from '../hooks/customHooks';
-import { orderSelector } from '../redux/slices/orderSlice';
+import { useSelector } from 'react-redux'
 
 //import Components
 import OrderTile from '../components/OrderTile';
 import { typography, customContainer, customBtn } from '../styles/index';
+import { RootState } from '../redux/store';
 import { Order } from '../redux/reducers/ordersReducer';
 
 const OrdersPage = ( { navigation } : {navigation: any} ) => {
@@ -21,12 +22,13 @@ const OrdersPage = ( { navigation } : {navigation: any} ) => {
   };
 
   const [orders, setOrders] = useState<Array<Order>>([]);
-  const selectedOrders = useAppSelector(orderSelector);
+  const cartItem = useSelector((state: RootState) => state.orderReducer.cart);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    setOrders(selectedOrders);
-  }, [selectedOrders]);
+    setOrders(cartItem);
+    console.log(orders)
+  }, [cartItem, orders]);
 
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
@@ -37,16 +39,11 @@ const OrdersPage = ( { navigation } : {navigation: any} ) => {
           </Pressable>
           <Text style={styles.headerText}>Your Orders</Text>
         </View>
-        { orders.length > 0 ? (
-            orders.map((o) => (
-              <TouchableOpacity key={o['id']}>
-                <OrderTile name={o['name']} price={o['price']} id={o['id']}/>
-              </TouchableOpacity>
-            ))
-          ) : (
-            <Text>No todo item</Text>
-          )
-        }
+        { orders?.map((o) => (
+          <TouchableOpacity key={o['id']}>
+            <OrderTile name={o['name']} price={o['price']} id={o['id']} qty={o['qty']}/>
+          </TouchableOpacity>
+        ))}
       </View >
     </ScrollView>
   );

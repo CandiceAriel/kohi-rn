@@ -8,14 +8,16 @@ import React, { useEffect, useState } from 'react';
 import {StyleSheet, Text, Pressable, SafeAreaView, View } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { firebase } from '@react-native-firebase/database';
+import { useDispatch, useSelector } from 'react-redux';
 
 //import Components
 import useMenu from '../hooks/useMenu';
 import Card from '../components/MenuCard';
 import { typography, customContainer, customBtn } from '../styles/index';
-import { useAppSelector, useAppDispatch } from '../hooks/customHooks';
+import { RootState } from '../redux/store';
 import { Order } from '../redux/reducers/ordersReducer';
-import { orderAdded, orderSelector } from '../redux/slices/orderSlice';
+import { addToCart, orderSelector } from '../redux/slices/orderSlice';
+
 
 const HomePage = ({ navigation } : {navigation: any}) => {
   const menuDt = useMenu();
@@ -25,21 +27,23 @@ const HomePage = ({ navigation } : {navigation: any}) => {
   };
 
   const [orders, setOrders] = useState<Array<Order>>([]);
-  const selectedOrders = useAppSelector(orderSelector);
-  const dispatch = useAppDispatch();
+  const selectedOrders = useSelector((state: RootState) => state.orderReducer.cart);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setOrders(selectedOrders);
   }, [selectedOrders]);
 
-  function handleAddOrder(itemName: string, itemPrice: string) {
+  function handleAddOrder(itemId: string, itemName: string, itemPrice: string) {
     const newOrder = {
       id: (orders.length + 1).toString(),
+      itemId: itemId,
       name: itemName,
       price: itemPrice,
+      qty: 1
     };
-    dispatch(orderAdded(newOrder));
-    console.log(orders)
+    dispatch(addToCart(newOrder));
+    console.log(newOrder);
   }
 
   return (
@@ -53,7 +57,7 @@ const HomePage = ({ navigation } : {navigation: any}) => {
         </View>
         { menuDt.length > 0 ? (
             menuDt.map((menu) => (
-              <TouchableOpacity key={menu['id']} onPress={() => handleAddOrder(menu['name'], menu['price'])}>
+              <TouchableOpacity key={menu['id']} onPress={() => handleAddOrder( menu['id'],menu['name'], menu['price'])}>
                 <Card name={menu['name']} price={menu['price']} id={menu['id']}/>
               </TouchableOpacity>  
             ))

@@ -8,7 +8,8 @@ import { FlatList } from 'react-native-gesture-handler';
 type OrderProps = {
   name: string;
   price: string,
-  id: string
+  id: string,
+  qty: number
 };
 
 const OrderTile = (props: OrderProps) => {
@@ -17,6 +18,7 @@ const OrderTile = (props: OrderProps) => {
     <View style={styles.tileContainer}>
       <Text style={typography.cardTitle}>{ props.name }</Text>
       <Text style={typography.cardTitle}>{ props.price }</Text>
+      <Text style={typography.cardTitle}>{ props.qty.toString() }</Text>
     </View >
   );
 };

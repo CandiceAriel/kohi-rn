@@ -3,8 +3,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
 
-const addToCart = (state: any, action: any) => {
-  state.push(action.payload)
+import { OrderInterface } from "../types/cart.types"
+
+export const ADD_TO_CART = "ADD_TO_CART"
+
+interface AddToCartAction {
+  type: typeof ADD_TO_CART,
+  payload: OrderInterface[]
 }
 
+// const addToCart = (state, action) => {
+//   state.push(action.payload)
+// }
+
 export { addToCart }
+export type FeedActionTypes = AddToCartAction;
