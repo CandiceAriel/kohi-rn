@@ -3,18 +3,17 @@
 import React from 'react';
 import {StyleSheet, Text, View } from 'react-native';
 import { typography, customContainer, } from '../styles/index';
+import Menu from '../redux/types/menu';
 
-type CardProps = {
-  name: string;
-  price: string,
-  id: string
-};
+interface MenuCardProps {
+  menu: Menu;
+}
 
-const Card = (props: CardProps) => {
+const Card : React.FC<MenuCardProps> = ({ menu }) => {
   return (
     <View  style={customContainer.cardContainer}>
-      <Text style={typography.cardTitle}>{ props.name }</Text>
-      <Text style={typography.cardTitle}>{ props.price }</Text>
+      <Text style={typography.cardTitle}>{ menu.name }</Text>
+      <Text style={typography.cardTitle}>{ menu.price }</Text>
     </View >
   );
 };

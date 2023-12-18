@@ -24,7 +24,7 @@ export const typography = StyleSheet.create({
   cardTitle: {
     fontSize: 20,
     fontFamily: 'Montserrat-Bold',
-    
+    color: 'black',
   },
   buttonSmallText: {
     fontSize: 16,

@@ -16,19 +16,17 @@ import { typography, customContainer, customBtn } from '../styles/index';
 import { RootState } from '../redux/store';
 import { Order } from '../redux/reducers/ordersReducer';
 
-const OrdersPage = ( { navigation } : {navigation: any} ) => {
+const CartPage = ( { navigation } : {navigation: any} ) => {
   const goHome = () => {
     navigation.navigate('Home');
   };
 
-  const [orders, setOrders] = useState<Array<Order>>([]);
   const cartItem = useSelector((state: RootState) => state.orderReducer.cart);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    setOrders(cartItem);
-    console.log(orders)
-  }, [cartItem, orders]);
+    console.log(cartItem)
+  }, [cartItem]);
 
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
@@ -39,9 +37,9 @@ const OrdersPage = ( { navigation } : {navigation: any} ) => {
           </Pressable>
           <Text style={styles.headerText}>Your Orders</Text>
         </View>
-        { orders?.map((o) => (
+        { cartItem?.map((o) => (
           <TouchableOpacity key={o['id']}>
-            <OrderTile name={o['name']} price={o['price']} id={o['id']} qty={o['qty']}/>
+            <OrderTile item={o}/>
           </TouchableOpacity>
         ))}
       </View >
@@ -49,7 +47,7 @@ const OrdersPage = ( { navigation } : {navigation: any} ) => {
   );
 };
 
-export default OrdersPage;
+export default CartPage;
 
 const styles = StyleSheet.create({
   headerText: {

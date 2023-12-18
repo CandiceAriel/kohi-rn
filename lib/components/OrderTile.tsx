@@ -4,21 +4,19 @@ import React from 'react';
 import {StyleSheet, Text, View } from 'react-native';
 import { typography, customContainer } from '../styles/index';
 import { FlatList } from 'react-native-gesture-handler';
+import CartItem from '../redux/types/cartItem';
 
-type OrderProps = {
-  name: string;
-  price: string,
-  id: string,
-  qty: number
-};
+interface CartItemTileProps {
+  item: CartItem;
+}
 
-const OrderTile = (props: OrderProps) => {
+const OrderTile : React.FC<CartItemTileProps> = ({ item }) => {
  
   return (
     <View style={styles.tileContainer}>
-      <Text style={typography.cardTitle}>{ props.name }</Text>
-      <Text style={typography.cardTitle}>{ props.price }</Text>
-      <Text style={typography.cardTitle}>{ props.qty.toString() }</Text>
+      <Text style={typography.cardTitle}>{ item.name }</Text>
+      <Text style={typography.cardTitle}>{ item.price }</Text>
+      <Text style={typography.cardTitle}>{ item.quantity }</Text>
     </View >
   );
 };

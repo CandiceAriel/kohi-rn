@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import HomePage from '../screens/HomePage';
-import OrdersPage from '../screens/CartPage';
+import CartPage from '../screens/CartPage';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -14,7 +14,7 @@ function Stacks() {
         name='Home' 
         component={HomePage} 
         options={{ headerShown: false }} />
-      <Stack.Screen name='Orders' component={OrdersPage} options={{ headerShown: false }} />
+      <Stack.Screen name='Orders' component={CartPage} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }

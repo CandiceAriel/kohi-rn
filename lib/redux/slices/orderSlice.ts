@@ -13,7 +13,7 @@ export interface Order {
   itemId: string
   name: string,
   price: string,
-  qty: number
+  quantity: number
 }
 
 export interface CartState {
@@ -31,13 +31,13 @@ const orderSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       const itemInCart = state.cart.find((item) => item.itemId === action.payload.itemId);
-      
+
       if (itemInCart) {
-        if (itemInCart. qty!== undefined) {
-          itemInCart.qty++;
+        if (itemInCart. quantity!== undefined) {
+          itemInCart.quantity++;
         }
       } else {
-        state.cart.push({ ...action.payload, qty: 1 });
+        state.cart.push({ ...action.payload, quantity: 1 });
       }
     },
   }

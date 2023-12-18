@@ -40,7 +40,6 @@ const HomePage = ({ navigation } : {navigation: any}) => {
       itemId: itemId,
       name: itemName,
       price: itemPrice,
-      qty: 1
     };
     dispatch(addToCart(newOrder));
     console.log(newOrder);
@@ -58,7 +57,7 @@ const HomePage = ({ navigation } : {navigation: any}) => {
         { menuDt.length > 0 ? (
             menuDt.map((menu) => (
               <TouchableOpacity key={menu['id']} onPress={() => handleAddOrder( menu['id'],menu['name'], menu['price'])}>
-                <Card name={menu['name']} price={menu['price']} id={menu['id']}/>
+                <Card menu={menu}/>
               </TouchableOpacity>  
             ))
           ) : (
