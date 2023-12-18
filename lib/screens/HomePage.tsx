@@ -13,6 +13,9 @@ import { firebase } from '@react-native-firebase/database';
 import useMenu from '../hooks/useMenu';
 import Card from '../components/MenuCard';
 import { typography, customContainer, customBtn } from '../styles/index';
+import { useAppSelector, useAppDispatch } from '../hooks/customHooks';
+import { Order } from '../redux/reducers/ordersReducer';
+import { orderAdded, orderSelector } from '../redux/slices/orderSlice';
 
 const HomePage = ({ navigation } : {navigation: any}) => {
   const menuDt = useMenu();
@@ -20,6 +23,24 @@ const HomePage = ({ navigation } : {navigation: any}) => {
   const goToCart = () => {
     navigation.navigate('Orders');
   };
+
+  const [orders, setOrders] = useState<Array<Order>>([]);
+  const selectedOrders = useAppSelector(orderSelector);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    setOrders(selectedOrders);
+  }, [selectedOrders]);
+
+  function handleAddOrder(itemName: string, itemPrice: string) {
+    const newOrder = {
+      id: (orders.length + 1).toString(),
+      name: itemName,
+      price: itemPrice,
+    };
+    dispatch(orderAdded(newOrder));
+    console.log(orders)
+  }
 
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
@@ -29,12 +50,10 @@ const HomePage = ({ navigation } : {navigation: any}) => {
             <Text style={typography.buttonSmallText}>Cart</Text>
           </Pressable>
           <Text style={styles.headerText}>Hi, User! What can we get you today?</Text>
-          
         </View>
-        
         { menuDt.length > 0 ? (
             menuDt.map((menu) => (
-              <TouchableOpacity key={menu['id']}>
+              <TouchableOpacity key={menu['id']} onPress={() => handleAddOrder(menu['name'], menu['price'])}>
                 <Card name={menu['name']} price={menu['price']} id={menu['id']}/>
               </TouchableOpacity>  
             ))
@@ -44,7 +63,6 @@ const HomePage = ({ navigation } : {navigation: any}) => {
         }
       </View >
     </ScrollView>
-    
   );
 };
 

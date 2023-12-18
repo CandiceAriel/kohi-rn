@@ -27,6 +27,7 @@ export const customContainer = StyleSheet.create({
   },
   tileContainer: {
     padding: 20,
+    marginBottom: 15,
     minHeight: 80,
     width: SCREENSIZE.width * .9,
     backgroundColor: '#FFFFFF',

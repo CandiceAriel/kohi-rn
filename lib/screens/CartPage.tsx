@@ -8,11 +8,12 @@ import React, { useEffect, useState } from 'react';
 import {StyleSheet, Text, View, Pressable } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { useAppDispatch,useAppSelector } from '../hooks/customHooks';
-import { Order, orderSelector } from '../redux/slices/orderSlice';
+import { orderSelector } from '../redux/slices/orderSlice';
 
 //import Components
 import OrderTile from '../components/OrderTile';
 import { typography, customContainer, customBtn } from '../styles/index';
+import { Order } from '../redux/reducers/ordersReducer';
 
 const OrdersPage = ( { navigation } : {navigation: any} ) => {
   const goHome = () => {

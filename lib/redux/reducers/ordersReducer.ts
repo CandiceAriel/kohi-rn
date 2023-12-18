@@ -8,4 +8,16 @@ import {
   createReducer,
   AsyncThunk,
   UnknownAction,
-} from '@reduxjs/toolkit'
+} from '@reduxjs/toolkit';
+
+export interface Order {
+  id: string,
+  name: string,
+  price: string
+}
+
+export const initialState: Array<Order> = [{
+  id: '01',
+  name: 'Americano',
+  price: '10',
+}];

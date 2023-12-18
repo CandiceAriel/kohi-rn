@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import HomePage from '../screens/HomePage';
-import OrdersPage from '../screens/OrderPage';
+import OrdersPage from '../screens/CartPage';
 
 import { createStackNavigator } from '@react-navigation/stack';
 

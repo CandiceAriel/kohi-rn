@@ -6,6 +6,14 @@ import { StyleSheet } from "react-native";
 export const typography = StyleSheet.create({
   baseText: {
     fontSize: 16,
+    lineHeight: 21,
+    letterSpacing: 1.92,
+    fontFamily: 'Montserrat',
+  },
+  mediumText: {
+    fontSize: 20,
+    lineHeight: 21,
+    letterSpacing: 2.4,
     fontFamily: 'Montserrat',
   },
   titleText: {
